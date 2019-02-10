@@ -1,20 +1,41 @@
 type Query {
-  feed: [Post!]!
-  drafts: [Post!]!
-  post(id: ID!): Post
   me: User
+  apartment(id: ID!): Apartment
+  apartments: [Apartment]!
+  placesByApartmentId(apartmentId: ID!): [Place]!
 }
 
 type Mutation {
+  # Auth
   signup(email: String!, password: String!, name: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
-  createDraft(title: String!, content: String!): Post!
-  publish(id: ID!): Post!
-  deletePost(id: ID!): Post!
+  # Apartment
+  createApartment(name: String!): Apartment!
+  updateApartment(id: ID!, name: String, userIds: [String]): Apartment!
+  deleteApartment(id: ID!): Apartment
+  # Place
+  createPlace(apartmentId: ID!, name: String!, difficulty: Int!): Place!
+  updatePlace(name: String, difficulty: Int): Place!
+  deletePlace(id: ID!): Place
 }
 
-type Subscription {
-  feedSubscription: Post
+type Apartment {
+  id: ID!
+  name: String!
+  image: String
+  # owner: User!
+  # tenants: [User]!
+  places: [Place!]
+  tenants: [Tenant!]
+}
+
+type Place {
+  id: ID!
+  name: String!
+  difficulty: Int!
+  apartment: Apartment!
+  # createdAt: DateTime!
+  # updatedAt: DateTime!
 }
 
 type AuthPayload {
@@ -22,17 +43,14 @@ type AuthPayload {
   user: User!
 }
 
+type Tenant {
+  id: ID!
+  user: User!
+  apartment: Apartment!
+}
+
 type User {
   id: ID!
   email: String!
   name: String!
-  posts: [Post!]!
-}
-
-type Post {
-  id: ID!
-  published: Boolean!
-  title: String!
-  content: String!
-  author: User!
 }
