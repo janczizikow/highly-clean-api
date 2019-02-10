@@ -4,11 +4,6 @@ import { getUserId } from "../../utils";
 export const place = {
   createPlace(parent, args, ctx: Context) {
     // const userId = getUserId(ctx);
-
-    // if (userId) {
-    //   throw new Error("You must be authenticated to do this");
-    // }
-
     return ctx.prisma.createPlace({
       name: args.name,
       difficulty: args.difficulty,
@@ -19,11 +14,6 @@ export const place = {
   },
   updatePlace(parent, args, ctx) {
     // const userId = getUserId(ctx);
-
-    // if (userId) {
-    //   throw new Error("You must be authenticated to do this");
-    // }
-
     const data = { ...args };
     delete data.id;
 

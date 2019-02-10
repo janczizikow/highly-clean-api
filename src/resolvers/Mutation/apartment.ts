@@ -3,12 +3,6 @@ import { getUserId, Context } from "./../../utils";
 export const apartment = {
   async createApartment(parent, args, ctx: Context, info) {
     // const userId = getUserId(ctx);
-    // console.log(args);
-
-    // if (!userId) {
-    //   throw new Error("You must be logged in to do this");
-    // }
-
     const apartment = await ctx.prisma.createApartment({
       name: args.name,
       image:
@@ -19,11 +13,6 @@ export const apartment = {
   },
   async updateApartment(parent, args, ctx) {
     // const userId = getUserId(ctx);
-
-    // if (!userId) {
-    //   throw new Error("You must be logged in to do this");
-    // }
-
     const data = { ...args };
 
     delete data.id;
@@ -37,11 +26,6 @@ export const apartment = {
   },
   async deleteApartment(parent, args, ctx) {
     // const userId = getUserId(ctx);
-
-    // if (!userId) {
-    //   throw new Error("You must be logged in to do this");
-    // }
-
     // clean up apartment place
     const apartmentPlacesIds = await ctx.prisma
       .places({
