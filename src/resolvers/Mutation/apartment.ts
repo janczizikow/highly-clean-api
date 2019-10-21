@@ -26,15 +26,18 @@ export const apartment = {
   },
   async deleteApartment(parent, args, ctx) {
     // const userId = getUserId(ctx);
-    // clean up apartment place
-    const apartmentPlacesIds = await ctx.prisma
+    
+    // clean up apartment place if any
+      const apartmentPlaces = await ctx.prisma
       .places({
         where: { apartment: { id: args.id } }
       })
-      .map(place => place.id);
-    await ctx.prisma.deleteManyPlaces({
-      where: { id: apartmentPlacesIds }
-    });
+      const apartmentPlacesIds = apartmentPlaces.map(place => place.id);
+      if ((<[]>apartmentPlacesIds).length!=0) {
+        await ctx.prisma.deleteManyPlaces({
+          where: { id: apartmentPlacesIds }
+        });
+      }
 
     return ctx.prisma.deleteApartment({ id: args.id });
   }
