@@ -1,4 +1,8 @@
 {
   "version": 1,
-  "dotenv": ".env"
+  "env": {
+    "PRISMA_SECRET": "@prisma-secret",
+    "APP_SECRET": "@app-secret",
+    "PRISMA_ENDPOINT": "@prisma-endpoint"
+  }
 }
