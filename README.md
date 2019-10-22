@@ -1,4 +1,4 @@
-<h1 align="center"><strong>Boilerplate for an Advanced GraphQL Server w/ TypeScript</strong></h1>
+<h1 align="center"><strong>Highly Clean API</strong></h1>
 
 <br />
 
