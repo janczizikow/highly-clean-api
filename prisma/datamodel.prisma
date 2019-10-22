@@ -1,32 +1,36 @@
 type Apartment {
-  id: ID! @unique
+  id: ID! @unique @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   name: String!
   image: String
   places: [Place]!
   # owner: User!
   # tenants: [User]!
-  createdAt: DateTime!
-  updatedAt: DateTime!
 }
 
 type User {
-  id: ID! @unique
+  id: ID! @unique @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   email: String! @unique
   password: String!
   name: String!
 }
 
 type Place {
-  id: ID! @unique
+  id: ID! @unique @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   name: String!
   difficulty: Int!
-  createdAt: DateTime!
-  updatedAt: DateTime!
   apartment: Apartment!
 }
 
 type IWasntThere {
-  id: ID! @unique
+  id: ID! @unique @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   date: DateTime!
   user: User!
   apartment: Apartment!

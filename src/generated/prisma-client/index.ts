@@ -243,50 +243,50 @@ export interface ClientConstructor<T> {
 export type PlaceOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "difficulty_ASC"
-  | "difficulty_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
-  | "updatedAt_DESC";
+  | "updatedAt_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "difficulty_ASC"
+  | "difficulty_DESC";
 
 export type ApartmentOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "image_ASC"
-  | "image_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
-  | "updatedAt_DESC";
+  | "updatedAt_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "image_ASC"
+  | "image_DESC";
 
 export type IWasntThereOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "date_ASC"
-  | "date_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
-  | "updatedAt_DESC";
+  | "updatedAt_DESC"
+  | "date_ASC"
+  | "date_DESC";
 
 export type UserOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
   | "email_ASC"
   | "email_DESC"
   | "password_ASC"
   | "password_DESC"
   | "name_ASC"
-  | "name_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
+  | "name_DESC";
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
@@ -320,6 +320,22 @@ export interface ApartmentWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
   name?: String;
   name_not?: String;
   name_in?: String[] | String;
@@ -351,34 +367,9 @@ export interface ApartmentWhereInput {
   places_every?: PlaceWhereInput;
   places_some?: PlaceWhereInput;
   places_none?: PlaceWhereInput;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
   AND?: ApartmentWhereInput[] | ApartmentWhereInput;
   OR?: ApartmentWhereInput[] | ApartmentWhereInput;
   NOT?: ApartmentWhereInput[] | ApartmentWhereInput;
-}
-
-export interface IWasntThereUpdateManyMutationInput {
-  date?: DateTimeInput;
-}
-
-export interface ApartmentCreateOneInput {
-  create?: ApartmentCreateInput;
-  connect?: ApartmentWhereUniqueInput;
 }
 
 export interface ApartmentUpsertNestedInput {
@@ -386,15 +377,27 @@ export interface ApartmentUpsertNestedInput {
   create: ApartmentCreateInput;
 }
 
-export interface ApartmentUpdateManyMutationInput {
-  name?: String;
-  image?: String;
+export interface ApartmentCreateOneInput {
+  create?: ApartmentCreateInput;
+  connect?: ApartmentWhereUniqueInput;
 }
 
 export interface ApartmentUpdateDataInput {
   name?: String;
   image?: String;
   places?: PlaceUpdateManyWithoutApartmentInput;
+}
+
+export interface ApartmentUpdateManyMutationInput {
+  name?: String;
+  image?: String;
+}
+
+export interface ApartmentUpdateOneRequiredInput {
+  create?: ApartmentCreateInput;
+  update?: ApartmentUpdateDataInput;
+  upsert?: ApartmentUpsertNestedInput;
+  connect?: ApartmentWhereUniqueInput;
 }
 
 export interface PlaceSubscriptionWhereInput {
@@ -456,6 +459,22 @@ export interface UserWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
   email?: String;
   email_not?: String;
   email_in?: String[] | String;
@@ -508,9 +527,9 @@ export interface PlaceCreateWithoutApartmentInput {
   difficulty: Int;
 }
 
-export interface ApartmentUpsertWithoutPlacesInput {
-  update: ApartmentUpdateWithoutPlacesDataInput;
-  create: ApartmentCreateWithoutPlacesInput;
+export interface ApartmentUpdateWithoutPlacesDataInput {
+  name?: String;
+  image?: String;
 }
 
 export interface ApartmentUpdateInput {
@@ -519,11 +538,10 @@ export interface ApartmentUpdateInput {
   places?: PlaceUpdateManyWithoutApartmentInput;
 }
 
-export interface ApartmentUpdateOneRequiredWithoutPlacesInput {
-  create?: ApartmentCreateWithoutPlacesInput;
-  update?: ApartmentUpdateWithoutPlacesDataInput;
-  upsert?: ApartmentUpsertWithoutPlacesInput;
-  connect?: ApartmentWhereUniqueInput;
+export interface PlaceUpdateInput {
+  name?: String;
+  difficulty?: Int;
+  apartment?: ApartmentUpdateOneRequiredWithoutPlacesInput;
 }
 
 export interface PlaceUpdateManyWithoutApartmentInput {
@@ -546,25 +564,14 @@ export interface PlaceUpdateManyWithoutApartmentInput {
     | PlaceUpdateManyWithWhereNestedInput;
 }
 
-export interface PlaceUpdateInput {
-  name?: String;
-  difficulty?: Int;
-  apartment?: ApartmentUpdateOneRequiredWithoutPlacesInput;
+export interface ApartmentCreateWithoutPlacesInput {
+  name: String;
+  image?: String;
 }
 
 export interface PlaceUpdateWithWhereUniqueWithoutApartmentInput {
   where: PlaceWhereUniqueInput;
   data: PlaceUpdateWithoutApartmentDataInput;
-}
-
-export interface ApartmentCreateOneWithoutPlacesInput {
-  create?: ApartmentCreateWithoutPlacesInput;
-  connect?: ApartmentWhereUniqueInput;
-}
-
-export interface PlaceUpdateWithoutApartmentDataInput {
-  name?: String;
-  difficulty?: Int;
 }
 
 export interface PlaceCreateInput {
@@ -573,11 +580,18 @@ export interface PlaceCreateInput {
   apartment: ApartmentCreateOneWithoutPlacesInput;
 }
 
-export interface ApartmentUpdateOneRequiredInput {
-  create?: ApartmentCreateInput;
-  update?: ApartmentUpdateDataInput;
-  upsert?: ApartmentUpsertNestedInput;
-  connect?: ApartmentWhereUniqueInput;
+export interface PlaceUpdateWithoutApartmentDataInput {
+  name?: String;
+  difficulty?: Int;
+}
+
+export interface IWasntThereUpdateManyMutationInput {
+  date?: DateTimeInput;
+}
+
+export interface UserUpsertNestedInput {
+  update: UserUpdateDataInput;
+  create: UserCreateInput;
 }
 
 export interface IWasntThereSubscriptionWhereInput {
@@ -606,6 +620,22 @@ export interface PlaceScalarWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
   name?: String;
   name_not?: String;
   name_in?: String[] | String;
@@ -628,22 +658,6 @@ export interface PlaceScalarWhereInput {
   difficulty_lte?: Int;
   difficulty_gt?: Int;
   difficulty_gte?: Int;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
   AND?: PlaceScalarWhereInput[] | PlaceScalarWhereInput;
   OR?: PlaceScalarWhereInput[] | PlaceScalarWhereInput;
   NOT?: PlaceScalarWhereInput[] | PlaceScalarWhereInput;
@@ -660,6 +674,21 @@ export interface PlaceUpdateManyWithWhereNestedInput {
   data: PlaceUpdateManyDataInput;
 }
 
+export interface ApartmentUpsertWithoutPlacesInput {
+  update: ApartmentUpdateWithoutPlacesDataInput;
+  create: ApartmentCreateWithoutPlacesInput;
+}
+
+export interface UserUpdateDataInput {
+  email?: String;
+  password?: String;
+  name?: String;
+}
+
+export type PlaceWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
 export interface PlaceWhereInput {
   id?: ID_Input;
   id_not?: ID_Input;
@@ -675,6 +704,22 @@ export interface PlaceWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
   name?: String;
   name_not?: String;
   name_in?: String[] | String;
@@ -697,41 +742,10 @@ export interface PlaceWhereInput {
   difficulty_lte?: Int;
   difficulty_gt?: Int;
   difficulty_gte?: Int;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
   apartment?: ApartmentWhereInput;
   AND?: PlaceWhereInput[] | PlaceWhereInput;
   OR?: PlaceWhereInput[] | PlaceWhereInput;
   NOT?: PlaceWhereInput[] | PlaceWhereInput;
-}
-
-export interface UserUpsertNestedInput {
-  update: UserUpdateDataInput;
-  create: UserCreateInput;
-}
-
-export type PlaceWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface UserUpdateDataInput {
-  email?: String;
-  password?: String;
-  name?: String;
 }
 
 export type UserWhereUniqueInput = AtLeastOne<{
@@ -790,6 +804,22 @@ export interface IWasntThereWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
   date?: DateTimeInput;
   date_not?: DateTimeInput;
   date_in?: DateTimeInput[] | DateTimeInput;
@@ -816,14 +846,16 @@ export interface UserSubscriptionWhereInput {
   NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
 }
 
-export interface ApartmentCreateWithoutPlacesInput {
-  name: String;
-  image?: String;
+export interface ApartmentCreateOneWithoutPlacesInput {
+  create?: ApartmentCreateWithoutPlacesInput;
+  connect?: ApartmentWhereUniqueInput;
 }
 
-export interface ApartmentUpdateWithoutPlacesDataInput {
-  name?: String;
-  image?: String;
+export interface ApartmentUpdateOneRequiredWithoutPlacesInput {
+  create?: ApartmentCreateWithoutPlacesInput;
+  update?: ApartmentUpdateWithoutPlacesDataInput;
+  upsert?: ApartmentUpsertWithoutPlacesInput;
+  connect?: ApartmentWhereUniqueInput;
 }
 
 export interface NodeNode {
@@ -832,6 +864,8 @@ export interface NodeNode {
 
 export interface UserPreviousValues {
   id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
   email: String;
   password: String;
   name: String;
@@ -841,6 +875,8 @@ export interface UserPreviousValuesPromise
   extends Promise<UserPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
   email: () => Promise<String>;
   password: () => Promise<String>;
   name: () => Promise<String>;
@@ -850,6 +886,8 @@ export interface UserPreviousValuesSubscription
   extends Promise<AsyncIterator<UserPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   email: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
@@ -857,6 +895,8 @@ export interface UserPreviousValuesSubscription
 
 export interface User {
   id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
   email: String;
   password: String;
   name: String;
@@ -864,6 +904,8 @@ export interface User {
 
 export interface UserPromise extends Promise<User>, Fragmentable {
   id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
   email: () => Promise<String>;
   password: () => Promise<String>;
   name: () => Promise<String>;
@@ -873,6 +915,8 @@ export interface UserSubscription
   extends Promise<AsyncIterator<User>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   email: () => Promise<AsyncIterator<String>>;
   password: () => Promise<AsyncIterator<String>>;
   name: () => Promise<AsyncIterator<String>>;
@@ -880,18 +924,18 @@ export interface UserSubscription
 
 export interface Place {
   id: ID_Output;
-  name: String;
-  difficulty: Int;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
+  name: String;
+  difficulty: Int;
 }
 
 export interface PlacePromise extends Promise<Place>, Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  difficulty: () => Promise<Int>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
+  name: () => Promise<String>;
+  difficulty: () => Promise<Int>;
   apartment: <T = ApartmentPromise>() => T;
 }
 
@@ -899,32 +943,32 @@ export interface PlaceSubscription
   extends Promise<AsyncIterator<Place>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  difficulty: () => Promise<AsyncIterator<Int>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  name: () => Promise<AsyncIterator<String>>;
+  difficulty: () => Promise<AsyncIterator<Int>>;
   apartment: <T = ApartmentSubscription>() => T;
 }
 
-export interface IWasntThereConnection {
+export interface ApartmentConnection {
   pageInfo: PageInfo;
-  edges: IWasntThereEdge[];
+  edges: ApartmentEdge[];
 }
 
-export interface IWasntThereConnectionPromise
-  extends Promise<IWasntThereConnection>,
+export interface ApartmentConnectionPromise
+  extends Promise<ApartmentConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<IWasntThereEdge>>() => T;
-  aggregate: <T = AggregateIWasntTherePromise>() => T;
+  edges: <T = FragmentableArray<ApartmentEdge>>() => T;
+  aggregate: <T = AggregateApartmentPromise>() => T;
 }
 
-export interface IWasntThereConnectionSubscription
-  extends Promise<AsyncIterator<IWasntThereConnection>>,
+export interface ApartmentConnectionSubscription
+  extends Promise<AsyncIterator<ApartmentConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<IWasntThereEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateIWasntThereSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ApartmentEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateApartmentSubscription>() => T;
 }
 
 export interface PageInfo {
@@ -968,11 +1012,15 @@ export interface BatchPayloadSubscription
 
 export interface IWasntThere {
   id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
   date: DateTimeOutput;
 }
 
 export interface IWasntTherePromise extends Promise<IWasntThere>, Fragmentable {
   id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
   date: () => Promise<DateTimeOutput>;
   user: <T = UserPromise>() => T;
   apartment: <T = ApartmentPromise>() => T;
@@ -982,6 +1030,8 @@ export interface IWasntThereSubscription
   extends Promise<AsyncIterator<IWasntThere>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   date: () => Promise<AsyncIterator<DateTimeOutput>>;
   user: <T = UserSubscription>() => T;
   apartment: <T = ApartmentSubscription>() => T;
@@ -989,46 +1039,47 @@ export interface IWasntThereSubscription
 
 export interface PlacePreviousValues {
   id: ID_Output;
-  name: String;
-  difficulty: Int;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
+  name: String;
+  difficulty: Int;
 }
 
 export interface PlacePreviousValuesPromise
   extends Promise<PlacePreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  difficulty: () => Promise<Int>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
+  name: () => Promise<String>;
+  difficulty: () => Promise<Int>;
 }
 
 export interface PlacePreviousValuesSubscription
   extends Promise<AsyncIterator<PlacePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  difficulty: () => Promise<AsyncIterator<Int>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  name: () => Promise<AsyncIterator<String>>;
+  difficulty: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface AggregateUser {
-  count: Int;
+export interface UserEdge {
+  node: User;
+  cursor: String;
 }
 
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = UserPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
     Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface AggregateApartment {
@@ -1047,25 +1098,29 @@ export interface AggregateApartmentSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface UserConnection {
-  pageInfo: PageInfo;
-  edges: UserEdge[];
+export interface UserSubscriptionPayload {
+  mutation: MutationType;
+  node: User;
+  updatedFields: String[];
+  previousValues: UserPreviousValues;
 }
 
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
+export interface UserSubscriptionPayloadPromise
+  extends Promise<UserSubscriptionPayload>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
+  mutation: () => Promise<MutationType>;
+  node: <T = UserPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserPreviousValuesPromise>() => T;
 }
 
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
 export interface ApartmentEdge {
@@ -1087,32 +1142,35 @@ export interface ApartmentEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface AggregatePlace {
-  count: Int;
+export interface PlaceEdge {
+  node: Place;
+  cursor: String;
 }
 
-export interface AggregatePlacePromise
-  extends Promise<AggregatePlace>,
-    Fragmentable {
-  count: () => Promise<Int>;
+export interface PlaceEdgePromise extends Promise<PlaceEdge>, Fragmentable {
+  node: <T = PlacePromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface AggregatePlaceSubscription
-  extends Promise<AsyncIterator<AggregatePlace>>,
+export interface PlaceEdgeSubscription
+  extends Promise<AsyncIterator<PlaceEdge>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  node: <T = PlaceSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface Apartment {
   id: ID_Output;
-  name: String;
-  image?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
+  name: String;
+  image?: String;
 }
 
 export interface ApartmentPromise extends Promise<Apartment>, Fragmentable {
   id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
   name: () => Promise<String>;
   image: () => Promise<String>;
   places: <T = FragmentableArray<Place>>(
@@ -1126,14 +1184,14 @@ export interface ApartmentPromise extends Promise<Apartment>, Fragmentable {
       last?: Int;
     }
   ) => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface ApartmentSubscription
   extends Promise<AsyncIterator<Apartment>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   name: () => Promise<AsyncIterator<String>>;
   image: () => Promise<AsyncIterator<String>>;
   places: <T = Promise<AsyncIterator<PlaceSubscription>>>(
@@ -1147,29 +1205,22 @@ export interface ApartmentSubscription
       last?: Int;
     }
   ) => T;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface PlaceConnection {
-  pageInfo: PageInfo;
-  edges: PlaceEdge[];
+export interface AggregateIWasntThere {
+  count: Int;
 }
 
-export interface PlaceConnectionPromise
-  extends Promise<PlaceConnection>,
+export interface AggregateIWasntTherePromise
+  extends Promise<AggregateIWasntThere>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PlaceEdge>>() => T;
-  aggregate: <T = AggregatePlacePromise>() => T;
+  count: () => Promise<Int>;
 }
 
-export interface PlaceConnectionSubscription
-  extends Promise<AsyncIterator<PlaceConnection>>,
+export interface AggregateIWasntThereSubscription
+  extends Promise<AsyncIterator<AggregateIWasntThere>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PlaceEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePlaceSubscription>() => T;
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface ApartmentSubscriptionPayload {
@@ -1197,44 +1248,52 @@ export interface ApartmentSubscriptionPayloadSubscription
   previousValues: <T = ApartmentPreviousValuesSubscription>() => T;
 }
 
-export interface IWasntThereEdge {
-  node: IWasntThere;
-  cursor: String;
+export interface IWasntThereConnection {
+  pageInfo: PageInfo;
+  edges: IWasntThereEdge[];
 }
 
-export interface IWasntThereEdgePromise
-  extends Promise<IWasntThereEdge>,
+export interface IWasntThereConnectionPromise
+  extends Promise<IWasntThereConnection>,
     Fragmentable {
-  node: <T = IWasntTherePromise>() => T;
-  cursor: () => Promise<String>;
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<IWasntThereEdge>>() => T;
+  aggregate: <T = AggregateIWasntTherePromise>() => T;
 }
 
-export interface IWasntThereEdgeSubscription
-  extends Promise<AsyncIterator<IWasntThereEdge>>,
+export interface IWasntThereConnectionSubscription
+  extends Promise<AsyncIterator<IWasntThereConnection>>,
     Fragmentable {
-  node: <T = IWasntThereSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<IWasntThereEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateIWasntThereSubscription>() => T;
 }
 
-export interface UserEdge {
-  node: User;
-  cursor: String;
+export interface UserConnection {
+  pageInfo: PageInfo;
+  edges: UserEdge[];
 }
 
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
     Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
+}
+
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
 }
 
 export interface IWasntTherePreviousValues {
   id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
   date: DateTimeOutput;
 }
 
@@ -1242,6 +1301,8 @@ export interface IWasntTherePreviousValuesPromise
   extends Promise<IWasntTherePreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
   date: () => Promise<DateTimeOutput>;
 }
 
@@ -1249,6 +1310,8 @@ export interface IWasntTherePreviousValuesSubscription
   extends Promise<AsyncIterator<IWasntTherePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   date: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
@@ -1304,109 +1367,102 @@ export interface PlaceSubscriptionPayloadSubscription
 
 export interface ApartmentPreviousValues {
   id: ID_Output;
-  name: String;
-  image?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
+  name: String;
+  image?: String;
 }
 
 export interface ApartmentPreviousValuesPromise
   extends Promise<ApartmentPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  image: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
+  name: () => Promise<String>;
+  image: () => Promise<String>;
 }
 
 export interface ApartmentPreviousValuesSubscription
   extends Promise<AsyncIterator<ApartmentPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  image: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  name: () => Promise<AsyncIterator<String>>;
+  image: () => Promise<AsyncIterator<String>>;
 }
 
-export interface ApartmentConnection {
-  pageInfo: PageInfo;
-  edges: ApartmentEdge[];
-}
-
-export interface ApartmentConnectionPromise
-  extends Promise<ApartmentConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ApartmentEdge>>() => T;
-  aggregate: <T = AggregateApartmentPromise>() => T;
-}
-
-export interface ApartmentConnectionSubscription
-  extends Promise<AsyncIterator<ApartmentConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ApartmentEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateApartmentSubscription>() => T;
-}
-
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
-}
-
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
-}
-
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
-}
-
-export interface AggregateIWasntThere {
+export interface AggregatePlace {
   count: Int;
 }
 
-export interface AggregateIWasntTherePromise
-  extends Promise<AggregateIWasntThere>,
+export interface AggregatePlacePromise
+  extends Promise<AggregatePlace>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateIWasntThereSubscription
-  extends Promise<AsyncIterator<AggregateIWasntThere>>,
+export interface AggregatePlaceSubscription
+  extends Promise<AsyncIterator<AggregatePlace>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface PlaceEdge {
-  node: Place;
+export interface AggregateUser {
+  count: Int;
+}
+
+export interface AggregateUserPromise
+  extends Promise<AggregateUser>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUser>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface IWasntThereEdge {
+  node: IWasntThere;
   cursor: String;
 }
 
-export interface PlaceEdgePromise extends Promise<PlaceEdge>, Fragmentable {
-  node: <T = PlacePromise>() => T;
+export interface IWasntThereEdgePromise
+  extends Promise<IWasntThereEdge>,
+    Fragmentable {
+  node: <T = IWasntTherePromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface PlaceEdgeSubscription
-  extends Promise<AsyncIterator<PlaceEdge>>,
+export interface IWasntThereEdgeSubscription
+  extends Promise<AsyncIterator<IWasntThereEdge>>,
     Fragmentable {
-  node: <T = PlaceSubscription>() => T;
+  node: <T = IWasntThereSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface PlaceConnection {
+  pageInfo: PageInfo;
+  edges: PlaceEdge[];
+}
+
+export interface PlaceConnectionPromise
+  extends Promise<PlaceConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PlaceEdge>>() => T;
+  aggregate: <T = AggregatePlacePromise>() => T;
+}
+
+export interface PlaceConnectionSubscription
+  extends Promise<AsyncIterator<PlaceConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PlaceEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePlaceSubscription>() => T;
 }
 
 export type Long = string;
@@ -1417,17 +1473,6 @@ The `Int` scalar type represents non-fractional signed whole numeric values. Int
 export type Int = number;
 
 /*
-The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
-*/
-export type ID_Input = string | number;
-export type ID_Output = string;
-
-/*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
-*/
-export type String = string;
-
-/*
 DateTime scalar input type, allowing Date
 */
 export type DateTimeInput = Date | string;
@@ -1436,6 +1481,17 @@ export type DateTimeInput = Date | string;
 DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
+
+/*
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+*/
+export type String = string;
+
+/*
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+*/
+export type ID_Input = string | number;
+export type ID_Output = string;
 
 /*
 The `Boolean` scalar type represents `true` or `false`.
