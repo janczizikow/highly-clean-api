@@ -1,5 +1,6 @@
 scalar DateTime
 
+
 type Query {
   me: User
   apartment(id: ID!): Apartment
@@ -21,6 +22,25 @@ type Mutation {
   deletePlace(id: ID!): Place
 }
 
+
+type User {
+  id: ID!
+  email: String!
+  name: String!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type Tenant {
+  id: ID!
+  user: User!
+  apartment: Apartment!
+}
+
+
 type Apartment {
   id: ID!
   name: String!
@@ -39,21 +59,4 @@ type Place {
   # createdAt: DateTime!
   # updatedAt: DateTime!
   lastCleanedAt: DateTime
-}
-
-type AuthPayload {
-  token: String!
-  user: User!
-}
-
-type Tenant {
-  id: ID!
-  user: User!
-  apartment: Apartment!
-}
-
-type User {
-  id: ID!
-  email: String!
-  name: String!
 }
