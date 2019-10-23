@@ -1,5 +1,6 @@
 {
   "version": 1,
+  "public": true,
   "env": {
     "PRISMA_SECRET": "@prisma-secret",
     "APP_SECRET": "@app-secret",
