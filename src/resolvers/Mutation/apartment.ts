@@ -39,6 +39,7 @@ export const apartment = {
         });
       }
 
+    // delete apartment
     return ctx.prisma.deleteApartment({ id: args.id });
   }
 };
