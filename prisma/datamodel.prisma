@@ -25,6 +25,7 @@ type Place {
   name: String!
   difficulty: Int!
   apartment: Apartment!
+  lastCleanedAt: DateTime
 }
 
 type IWasntThere {
