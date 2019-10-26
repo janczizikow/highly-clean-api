@@ -13,5 +13,8 @@ export const Query = {
   },
   placesByApartmentId(parent, args, ctx: Context) {
     return ctx.prisma.apartment({ id: args.apartmentId }).places();
-  }
+  },
+  places(parent, args, ctx: Context) {
+    return ctx.prisma.places();
+  },
 };

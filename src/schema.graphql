@@ -6,6 +6,7 @@ type Query {
   apartment(id: ID!): Apartment
   apartments: [Apartment]!
   placesByApartmentId(apartmentId: ID!): [Place]!
+  places: [Place]!
 }
 
 type Mutation {
@@ -13,8 +14,8 @@ type Mutation {
   signup(email: String!, password: String!, name: String!): AuthPayload!
   login(email: String!, password: String!): AuthPayload!
   # Apartment
-  createApartment(name: String!): Apartment!
-  updateApartment(id: ID!, name: String, userIds: [String]): Apartment!
+  createApartment(name: String!, image: String): Apartment!
+  updateApartment(id: ID!, name: String, image: String, placeIds: [String!]): Apartment!
   deleteApartment(id: ID!): Apartment
   # Place
   createPlace(apartmentId: ID!, name: String!, difficulty: Int!): Place!
@@ -22,6 +23,7 @@ type Mutation {
   deletePlace(id: ID!): Place
 }
 
+# Types
 
 type User {
   id: ID!
@@ -66,3 +68,5 @@ type Place {
   # updatedAt: DateTime!
   lastCleanedAt: DateTime
 }
+
+# Inputs

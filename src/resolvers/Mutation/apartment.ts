@@ -5,11 +5,11 @@ export const apartment = {
     // const userId = getUserId(ctx);
     const apartment = await ctx.prisma.createApartment({
       name: args.name,
-      image: "https://www.visitberlin.de/system/files/styles/visitberlin_teaser_single_visitberlin_mobile_1x/private/image/_SCH6057_c_Scholvien_PSR_SC_STD_V2_DL_PPT_0.jpg?h=32462309&itok=Xi0CMgn5",
+      image: args.image,
       places: {
         create: [
           {
-            name: "default place",
+            name: "default place for "+args.name,
             difficulty: 1,
           }
         ]
@@ -23,6 +23,11 @@ export const apartment = {
     const data = { ...args };
 
     delete data.id;
+    delete data.placeIds;
+
+    if (args.placeIds.length != 0) {
+      data.places = {connect: args.placeIds.map((placeId: { id: string; })=>{return {id:  placeId};})};
+    }
 
     return ctx.prisma.updateApartment({
       data,
