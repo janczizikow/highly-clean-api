@@ -43,6 +43,6 @@ export const place = {
     };
 
     return ctx.prisma.deletePlace({ id: args.id });
-  }
+  },
 
 };
