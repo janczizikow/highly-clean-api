@@ -3,10 +3,7 @@ scalar DateTime
 
 type Query {
   me: User
-  apartment(id: ID!): Apartment
   apartments: [Apartment]!
-  placesByApartmentId(apartmentId: ID!): [Place]!
-  places: [Place]!
 }
 
 type Mutation {
