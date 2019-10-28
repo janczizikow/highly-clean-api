@@ -11,6 +11,9 @@ const Relations = {
   Apartment: {
     places(parent, args, ctx: Context) {
       return ctx.prisma.apartment({ id: parent.id }).places();
+    },
+    user(parent, args, ctx: Context) {
+      return ctx.prisma.apartment({ id: parent.id }).user();
     }
   },
 

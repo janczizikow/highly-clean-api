@@ -2,19 +2,13 @@ import { getUserId, Context } from "../utils";
 
 export const Query = {
   me(parent, args, ctx: Context) {
-    const id = getUserId(ctx);
-    return ctx.prisma.user({ id });
-  },
-  apartment(parent, args, ctx: Context) {
-    return ctx.prisma.apartment({ id: args.id });
+    const userId = getUserId(ctx);
+    return ctx.prisma.user({ id: userId });
   },
   apartments(parent, args, ctx: Context) {
-    return ctx.prisma.apartments();
-  },
-  placesByApartmentId(parent, args, ctx: Context) {
-    return ctx.prisma.apartment({ id: args.apartmentId }).places();
-  },
-  places(parent, args, ctx: Context) {
-    return ctx.prisma.places();
+    const userId = getUserId(ctx);
+    return ctx.prisma.apartments({where: {
+      user: {id: userId}
+    }});
   },
 };
