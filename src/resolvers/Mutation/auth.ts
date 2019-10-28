@@ -31,7 +31,7 @@ export const auth = {
   async login(parent, { email, password }, ctx: Context) {
     const user = await ctx.prisma.user({ email });
     if (!user) {
-      throw new Error(`No such user found for email: ${email}`);
+      throw new Error(`No user found for email: ${email}`);
     }
 
     const valid = await bcrypt.compare(password, user.password);

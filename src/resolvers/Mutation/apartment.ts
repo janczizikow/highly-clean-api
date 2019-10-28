@@ -9,7 +9,7 @@ export const apartment = {
       places: {
         create: [
           {
-            name: "default place for "+args.name,
+            name: "Default place for "+args.name,
             difficulty: 1,
           }
         ]

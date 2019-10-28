@@ -16,7 +16,7 @@ type Mutation {
   deleteApartment(id: ID!): Apartment
   # Place
   createPlace(apartmentId: ID!, name: String!, difficulty: Int!): Place!
-  updatePlace(name: String, difficulty: Int): Place!
+  updatePlace(id: ID!, name: String, difficulty: Int): Place!
   deletePlace(id: ID!): Place
 }
 
