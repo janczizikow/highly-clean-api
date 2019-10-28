@@ -2,7 +2,7 @@ import { getUserId, Context } from "./../../utils";
 
 export const apartment = {
   async createApartment(parent, args, ctx: Context, info) {
-    // const userId = getUserId(ctx);
+    const userId = getUserId(ctx);
     const apartment = await ctx.prisma.createApartment({
       name: args.name,
       image: args.image,
@@ -13,7 +13,12 @@ export const apartment = {
             difficulty: 1,
           }
         ]
-      }
+      },
+      user: {
+        connect: {
+          id: userId
+        }
+      },
     });
 
     return apartment;

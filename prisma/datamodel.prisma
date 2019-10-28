@@ -1,5 +1,6 @@
 type Apartment {
   id: ID! @unique @id
+  user: User
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   name: String!
