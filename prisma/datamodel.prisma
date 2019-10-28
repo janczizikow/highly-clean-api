@@ -17,6 +17,7 @@ type User {
   email: String! @unique
   password: String!
   name: String!
+  apartments: [Apartment]
 }
 
 type Place {
