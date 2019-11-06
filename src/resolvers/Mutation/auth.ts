@@ -22,7 +22,11 @@ export const auth = {
       password: paswordDigest,
       apartments: {create: [
         {
-          name: name + "'s Apartment",
+          name: name + "'s Default Apartment",
+          places: {create: [{
+            name: name + "s Default Place",
+            difficulty: 1,
+          }]}
       }]}
     });
 
