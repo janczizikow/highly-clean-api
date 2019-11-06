@@ -19,7 +19,11 @@ export const auth = {
     const paswordDigest = await bcrypt.hash(args.password, 10);
     const user = await ctx.prisma.createUser({
       ...args,
-      password: paswordDigest
+      password: paswordDigest,
+      apartments: {create: [
+        {
+          name: name + "'s Apartment",
+      }]}
     });
 
     return {
