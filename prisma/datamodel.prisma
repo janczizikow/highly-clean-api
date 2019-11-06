@@ -5,7 +5,7 @@ type Apartment {
   updatedAt: DateTime! @updatedAt
   name: String!
   image: String
-  places: [Place]!
+  places: [Place!]!
   # owner: User!
   # tenants: [User]!
 }
@@ -17,7 +17,7 @@ type User {
   email: String! @unique
   password: String!
   name: String!
-  apartments: [Apartment]
+  apartments: [Apartment!]!
 }
 
 type Place {

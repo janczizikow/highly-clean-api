@@ -28,7 +28,7 @@ type User {
   updatedAt: DateTime!
   email: String!
   name: String!
-  apartments: [Apartment]!
+  apartments: [Apartment!]!
 }
 
 type AuthPayload {
@@ -52,7 +52,7 @@ type Apartment {
   image: String
   # owner: User!
   # tenants: [User]!
-  places: [Place]!
+  places: [Place!]!
   tenants: [Tenant!]
 }
 
